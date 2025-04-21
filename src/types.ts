@@ -1,5 +1,4 @@
-// types/index.ts
-import { Dayjs } from 'dayjs';
+import { Dayjs } from "dayjs";
 
 export interface Event {
   id: string;
@@ -21,7 +20,7 @@ export interface NavItem {
 export interface SnackbarState {
   open: boolean;
   message: string;
-  severity: 'success' | 'error' | 'info' | 'warning';
+  severity: "success" | "error" | "info" | "warning";
 }
 
 export interface EventFormProps {
