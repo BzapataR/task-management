@@ -29,7 +29,6 @@ export default function CalendarPage() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
-  // Set default view mode based on screen size
   useEffect(() => {
     setViewMode(isMobile ? "list" : "month");
   }, [isMobile]);
@@ -246,7 +245,6 @@ export default function CalendarPage() {
       }
     }
 
-    // If no events in the entire month
     if (daysList.length === 0) {
       return (
         <Box sx={{ textAlign: "center", py: 4 }}>
@@ -354,7 +352,6 @@ export default function CalendarPage() {
                   justifyContent: "space-between",
                 }}
               >
-                {/* View toggle button */}
                 <Button variant="outlined" startIcon={viewMode === "month" ? <CalendarViewDay /> : <Event />} onClick={toggleViewMode} sx={{ display: { xs: "flex", md: "flex" } }}>
                   {viewMode === "month" ? "List View" : "Month View"}
                 </Button>
@@ -377,7 +374,6 @@ export default function CalendarPage() {
             </Box>
           </Paper>
 
-          {/* Selected day events summary for mobile */}
           {isMobile && (
             <Paper sx={{ p: 2, mb: 3, borderRadius: 2, display: { xs: "block", sm: "block" } }}>
               <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
@@ -392,7 +388,6 @@ export default function CalendarPage() {
             </Paper>
           )}
 
-          {/* Calendar Views */}
           <Paper sx={{ p: 0, borderRadius: 2, overflow: "hidden" }}>
             {viewMode === "month" ? (
               <div className="calendar-container">
@@ -406,7 +401,6 @@ export default function CalendarPage() {
           </Paper>
         </Box>
 
-        {/* Floating action button for mobile */}
         <Box
           sx={{
             position: "fixed",
@@ -451,179 +445,6 @@ export default function CalendarPage() {
             {snackbar.message}
           </Alert>
         </Snackbar>
-
-        <style jsx global>{`
-          .calendar-container {
-            width: 100%;
-            overflow-x: auto;
-          }
-
-          .calendar {
-            width: 100%;
-            border-collapse: collapse;
-            table-layout: fixed;
-          }
-
-          .calendar th {
-            padding: 12px 0;
-            text-align: center;
-            background-color: #1e1e1e;
-            color: #fff;
-            font-weight: 600;
-            border: 1px solid #333;
-          }
-
-          .calendar-day {
-            position: relative;
-            height: 120px;
-            width: calc(100% / 7);
-            vertical-align: top;
-            padding: 8px;
-            border: 1px solid #333;
-            background-color: #1a1a1a;
-            cursor: pointer;
-            transition: background-color 0.2s;
-          }
-
-          .calendar-day:hover {
-            background-color: #2a2a2a;
-          }
-
-          .calendar-day.today {
-            background-color: rgba(59, 130, 246, 0.1);
-          }
-
-          .calendar-day.selected {
-            background-color: rgba(59, 130, 246, 0.2);
-          }
-
-          .calendar-day.empty {
-            background-color: #171717;
-            cursor: default;
-          }
-
-          .day-number {
-            text-align: right;
-            font-size: 14px;
-            margin-bottom: 6px;
-            font-weight: 500;
-          }
-
-          .today .day-number {
-            color: #3b82f6;
-            font-weight: 700;
-          }
-
-          .selected .day-number {
-            color: #3b82f6;
-            font-weight: 700;
-          }
-
-          .day-events {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            overflow: hidden;
-          }
-
-          .event-item {
-            font-size: 12px;
-            padding: 2px 6px;
-            border-radius: 4px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            color: white;
-            cursor: pointer;
-          }
-
-          .more-events {
-            font-size: 11px;
-            padding: 1px 6px;
-            border-radius: 4px;
-            background-color: rgba(255, 255, 255, 0.1);
-            text-align: center;
-            cursor: pointer;
-          }
-
-          /* Calendar List View */
-          .calendar-list-view {
-            width: 100%;
-            max-height: 600px;
-            overflow-y: auto;
-          }
-
-          .list-day {
-            padding: 12px;
-            border-bottom: 1px solid #333;
-            cursor: pointer;
-          }
-
-          .list-day:hover {
-            background-color: rgba(255, 255, 255, 0.05);
-          }
-
-          .list-day.today {
-            background-color: rgba(59, 130, 246, 0.1);
-          }
-
-          .list-day.selected {
-            background-color: rgba(59, 130, 246, 0.2);
-          }
-
-          .list-day-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 8px;
-          }
-
-          .list-day-events {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-          }
-
-          .list-event-item {
-            padding: 10px;
-            border-radius: 8px;
-            background-color: #1e1e1e;
-            border-left: 4px solid #3b82f6;
-            cursor: pointer;
-            transition: background-color 0.2s;
-          }
-
-          .list-event-item:hover {
-            background-color: #2a2a2a;
-          }
-
-          /* Mobile Specific Styles */
-          @media (max-width: 600px) {
-            .calendar th {
-              padding: 8px 0;
-              font-size: 12px;
-            }
-
-            .calendar-day {
-              height: 80px;
-              padding: 4px;
-            }
-
-            .day-number {
-              font-size: 12px;
-              margin-bottom: 4px;
-            }
-
-            .event-item {
-              font-size: 10px;
-              padding: 1px 4px;
-            }
-
-            .more-events {
-              font-size: 9px;
-            }
-          }
-        `}</style>
       </div>
     </Providers>
   );
