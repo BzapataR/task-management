@@ -1,4 +1,4 @@
-import { AppBar, Toolbar, IconButton, Typography, Box } from "@mui/material";
+import { AppBar, Toolbar, IconButton, Box } from "@mui/material";
 import { Menu as MenuIcon, Add } from "@mui/icons-material";
 
 interface HeaderProps {
