@@ -25,9 +25,7 @@ const Header = ({ title, onMenuClick, onAddClick }: HeaderProps) => {
           <MenuIcon />
         </IconButton>
         <Box sx={{ display: "flex", alignItems: "center", flexGrow: 1 }}>
-          <Typography variant="h6" noWrap component="div" sx={{ display: { xs: "none", sm: "block" } }}>
-            {title}
-          </Typography>
+          <strong>{title}</strong>
         </Box>
         <Box
           sx={{
